@@ -901,16 +901,6 @@ window.onload = function() {
       var Engine = setInterval(function() {
         if (Status === "Loaded") {
           Status = "busy";
-          // Default test order: Download -> Upload -> Ping/Jitter (latency) at the end.
-          // We still need a server target for Download/Upload; when skipping initial ping,
-          // fall back to the first server in the list.
-          if (!fianlPingServer) {
-            fianlPingServer = openSpeedTestServerList[0];
-          }
-          Status = "Download";
-        }
-        if (Status === "PingStart") {
-          Status = "busy";
           sendPing(0);
         }
         if (Status === "Ping") {
@@ -993,10 +983,9 @@ window.onload = function() {
           if (uploadTimeing >= ulDuration && stop == 1) {
             dataUsedforul = uLoaded;
             Show.uploadResult(uploadSpeed);
-            pingAtEndMode = true;
-            Show.GaugeProgresstoZero(currentSpeed, "PingStart");
+            Show.GaugeProgresstoZero(currentSpeed, "SendR");
             SendData = undefined;
-            Show.showStatus("Testing latency..");
+            Show.showStatus("All done");
             Show.Symbol(2);
             Status = "busy";
             stop = 0;
@@ -1247,7 +1236,6 @@ window.onload = function() {
     var finalPing = [];
     var pingServer = [];
     var finalJitter = [];
-    var pingAtEndMode = false;
     var pingSendLength = openSpeedTestServerList.length;
     function readServerList() {
       pingSendLength = openSpeedTestServerList.length;
@@ -1278,12 +1266,7 @@ window.onload = function() {
               Status = SelectTest;
             }
           } else {
-            if (pingAtEndMode) {
-              pingAtEndMode = false;
-              Status = "SendR";
-            } else {
-              Status = "Download";
-            }
+            Status = "Download";
           }
         } else {
           if (pingServer.Download) {
