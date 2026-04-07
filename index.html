@@ -68,13 +68,11 @@
     // Set a PingTimeout dynamically by passing "Out" or "O" as a URL Parameter    
         var setPingTimeout = true;
 
-    // GET or HEAD
-    // For Vercel/static hosting, use HEAD against the static download file to avoid
-    // serverless cold-start latency skewing "ping" results.
-        var pingMethod = "HEAD";
+    // GET or HEAD  // Other Methods may work. but why?
+        var pingMethod = "GET";
 
-    // Choose Download or Upload from the Server list.
-        var pingFile = "Download";
+    //Choose Download or Upload from the Server list. If you Prefer Download, change pingMethod to HEAD.
+        var pingFile = "Upload";
 
     // The amount of garbage data sent to the server in Mb, 30 = 30Mb
         var ulDataSize = 30;
