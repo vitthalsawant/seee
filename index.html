@@ -69,10 +69,12 @@
         var setPingTimeout = true;
 
     // GET or HEAD  // Other Methods may work. but why?
-        var pingMethod = "GET";
+    // On serverless platforms (like Vercel), pinging the Upload endpoint can hit a function and inflate latency.
+    // Prefer HEAD against the static "downloading" file (served from CDN edge) for stable low ping.
+        var pingMethod = "HEAD";
 
-    //Choose Download or Upload from the Server list. If you Prefer Download, change pingMethod to HEAD.
-        var pingFile = "Upload";
+    // Choose Download or Upload from the Server list.
+        var pingFile = "Download";
 
     // The amount of garbage data sent to the server in Mb, 30 = 30Mb
         var ulDataSize = 30;
