@@ -1,0 +1,14 @@
+{
+  "name": "openspeedtest-static",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Static OpenSpeedTest assets (local dev server only).",
+  "scripts": {
+    "start": "serve -l 3000 .",
+    "serve": "serve -l 3000 ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
+
