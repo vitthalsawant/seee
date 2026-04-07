@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    { "source": "/upload", "destination": "/api/upload" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,HEAD,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type,Content-Length,Range" }
+      ]
+    }
+  ]
+}
+
