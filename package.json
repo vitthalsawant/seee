@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "description": "Static OpenSpeedTest assets (local dev server only).",
   "scripts": {
-    "start": "serve -l 3000 .",
-    "serve": "serve -l 3000 ."
+    "start": "node server.js",
+    "serve": "node server.js"
   },
   "devDependencies": {
     "serve": "^14.2.4"
