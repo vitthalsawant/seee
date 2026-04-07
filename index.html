@@ -68,9 +68,9 @@
     // Set a PingTimeout dynamically by passing "Out" or "O" as a URL Parameter    
         var setPingTimeout = true;
 
-    // GET or HEAD  // Other Methods may work. but why?
-    // On serverless platforms (like Vercel), pinging the Upload endpoint can hit a function and inflate latency.
-    // Prefer HEAD against the static "downloading" file (served from CDN edge) for stable low ping.
+    // GET or HEAD
+    // For Vercel/static hosting, use HEAD against the static download file to avoid
+    // serverless cold-start latency skewing "ping" results.
         var pingMethod = "HEAD";
 
     // Choose Download or Upload from the Server list.
